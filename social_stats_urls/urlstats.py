@@ -27,21 +27,21 @@ def get_pinterest_shares(url):
 		js = f.text
 		js = js[13:]
 		js = js[:-1]
-		return json.parse(js)['count']
+		return json.loads(js)['count']
 	except Exception,e:
 		return 0
 
 def get_linkedin_shares(url):
 	f = requests.get("http://www.linkedin.com/countserv/count/share?url=%s&format=json"%(url))
 	try:
-		return (f.json)['count']
+		return f.json()['count']
 	except Exception,e:
 		return 0
 
 def get_stumbleupon_shares(url):
 	 f = requests.get("http://www.stumbleupon.com/services/1.01/badge.getinfo?url=%s"%(url))
 	 try:
-	 	return (f.json)['result']['views']
+	 	return (f.json())['result']['views']
 	 except Exception,e:
 	 	return 0
 		
@@ -58,3 +58,8 @@ def get_googleplus_shares(url):
 		except Exception, e:
 			return 0
 
+print get_stumbleupon_shares("http://facebook.com")
+print get_linkedin_shares('http://facebook.com')
+print get_pinterest_shares('http://facebook.com')
+print get_twitter_shares('http://facebook.com')
+print get_facebook_shares('http://facebook.com')
