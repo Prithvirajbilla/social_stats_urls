@@ -57,9 +57,3 @@ def get_googleplus_shares(url):
 			return int(cont)
 		except Exception, e:
 			return 0
-
-print get_stumbleupon_shares("http://facebook.com")
-print get_linkedin_shares('http://facebook.com')
-print get_pinterest_shares('http://facebook.com')
-print get_twitter_shares('http://facebook.com')
-print get_facebook_shares('http://facebook.com')
